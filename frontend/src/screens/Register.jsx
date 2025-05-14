@@ -38,7 +38,8 @@ function Register(){
 
     else{
       const result=await register(name, username, password)
-      if(result['status']=='success'){
+      console.log(result.status)
+      if(result.status==201){
         toast.success('User Registered Successfully!')
 
         navigate('/login')
@@ -116,7 +117,7 @@ function Register(){
           <div className="row"> */}
             {/* <div className="col"> */}
               <div className="mb-3">
-                Already have an account? <Link to='/loign'>Login</Link>
+                Already have an account? <Link to='/login'>Login</Link>
               </div>
               <div className="mb-3">
                 <button onClick={onRegister}>Register</button>

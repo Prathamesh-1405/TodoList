@@ -8,7 +8,7 @@ export async function register(name, username, password) {
       name, username,  password,
     }
     const response=await axios.post(url, body)
-    return response.data
+    return {status: response.status, data: response.data}
   }
   catch(e){
     return {status: 'error', error:e}
@@ -23,7 +23,7 @@ export async function login(username, password) {
       username,  password,
     }
     const response=await axios.post(url, body)
-    return response.data
+    return {status: response.status, data: response.data}
   }
   catch(e){
     return {status: 'error', error:e}

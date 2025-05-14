@@ -15,7 +15,7 @@ function Login(){
 
   const navigate=useNavigate()
 
-  const onRegister= async()=>{
+  const onLogin= async()=>{
     
     if(username.length===0){
       toast.warning('Please Enter username!')
@@ -28,11 +28,14 @@ function Login(){
     }
     else{
       const result=await login(username, password)
-      if(result['status']=='success'){
+      if(result.status==200){
         toast.success('Login Successful!')
 
-        navigate('/login')
+        navigate('/todo')
+        sessionStorage.setItem('username', username)
+        
       }
+      
     }
   }
 
@@ -77,10 +80,10 @@ function Login(){
           {/*<div className="row"> */}
             {/* <div className="col"> */}
               <div className="mb-3">
-                Already have an account? <Link to='/loign'>Login</Link>
+                Don't have an account? <Link to='/'>Register</Link>
               </div>
               <div className="mb-3">
-                <button onClick={onRegister}>Register</button>
+                <button onClick={onLogin}>Login</button>
               </div>
               
             {/*</div> */}
