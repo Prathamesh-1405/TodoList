@@ -16,6 +16,21 @@ export async function getTodoItem(username) {
   
 }
 
+export async function editTodoItem(id) {
+  try {
+    const url = createUrl('todo/edit');
+
+    const response = await axios.patch(url, null, {
+      params: { tid: id }
+    });
+
+    return { status: 200, data: response.data };
+  } catch (e) {
+    return { status: 'error', error: e };
+  }
+}
+
+
 export async function addTodoItem(title, details, username) {
   try{
     const url=createUrl('todo/add')

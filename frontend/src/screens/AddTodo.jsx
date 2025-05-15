@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import 'react-toastify/dist/ReactToastify.css'
 import { addTodoItem } from "../services/todo"
+import Navbar from "../component/Navbar"
 
 
 function AddTodo(){
@@ -37,8 +38,10 @@ function AddTodo(){
 
   return (
     
-    <div style={{'backgroundColor':'lightblue'}}>
-      <h2 className="heading">Register</h2>
+    <div style={{'backgroundColor':'lightgrey'}}>
+      <Navbar/>
+      <div className="container" style={{'backgroundColor':'lightblue', maxWidth: '700px'}}>
+      <h2 className="heading">Add New Task</h2>
       <div className='row'>
         <div className="col-3"></div>
         <div className="col-6">
@@ -67,7 +70,7 @@ function AddTodo(){
           
         </div>
       </div>
-
+</div>
     </div>
     
   )

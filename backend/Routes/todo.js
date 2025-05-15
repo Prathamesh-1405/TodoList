@@ -18,17 +18,35 @@ router.get('/todo', async (req, res)=>{
     const user = await User.findOne({username: username})
     
     const userId=user._id
-    const todos = await Todo.find({userId});
+    const todos = await Todo.find({userId, completed: false});
     res.status(200).json(todos)
   }
   catch(err){
     console.error(err);
     res.status(500).json({ error: 'Server error' });
   }
+})
 
-  
 
+router.patch('/todo/edit', async(req, res)=>{
+  try{
+    
+    connectDB();
+    console.log(req.query);
+    
+    const {tid}=req.query;
+    if(!tid){
+      return res.status(400).json({message: 'Item not found!'})
+    }
+    await Todo.findByIdAndUpdate(tid, { completed: true});
+    res.status(204).send("Updated");
+    
 
+  }
+  catch(err){
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
 })
 
 router.post('/todo/add', async (req, res)=>{

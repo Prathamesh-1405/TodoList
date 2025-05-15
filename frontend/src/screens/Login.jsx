@@ -44,7 +44,9 @@ function Login(){
 
   return (
     
-    <div style={{'backgroundColor':'lightblue'}}>
+    <div style={{'backgroundColor':'lightgrey', minHeight: '100vh'}}>
+      <br /><br /><br />
+      <div className="container" style={{'backgroundColor':'lightblue',  maxWidth: '700px'}}>
       <h2 className="heading">Login</h2>
       <div className='row'>
         <div className="col-3"></div>
@@ -92,7 +94,7 @@ function Login(){
           
         </div>
       </div>
-
+</div>
     </div>
     
   )

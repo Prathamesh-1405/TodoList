@@ -43,7 +43,7 @@ function Register(){
         toast.success('User Registered Successfully!')
 
         navigate('/login')
-      }
+      } 
     }
   }
 
@@ -52,8 +52,13 @@ function Register(){
 
   return (
     
-    <div style={{'backgroundColor':'lightblue'}}>
-      <h2 className="heading">Register</h2>
+    <div style={{'backgroundColor':'lightgrey', minHeight: '100vh'}}>
+      <br /><br /><br />
+      <div className="container" style={{
+    backgroundImage: 'linear-gradient(to right, #000000, #434343)', maxWidth: '700px',
+  }}>
+    <br />
+      <h2 className="heading" style={{color:'whitesmoke'}}>Register</h2>
       <div className='row'>
         <div className="col-3"></div>
         <div className="col-6">
@@ -116,7 +121,7 @@ function Register(){
           {/* </div>
           <div className="row"> */}
             {/* <div className="col"> */}
-              <div className="mb-3">
+              <div className="mb-3" style={{color: 'whitesmoke'}}>
                 Already have an account? <Link to='/login'>Login</Link>
               </div>
               <div className="mb-3">
@@ -129,7 +134,7 @@ function Register(){
           
         </div>
       </div>
-
+</div>
     </div>
     
   )
