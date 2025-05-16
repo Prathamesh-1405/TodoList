@@ -45,24 +45,25 @@ function AddTodo(){
 
   return (
     
-    <div style={{'backgroundColor':'lightgrey'}}>
+    <div style={{'backgroundColor':'	#D3D3D3'}}>
       <Navbar/>
-      <div className="container" style={{'backgroundColor':'lightblue', maxWidth: '700px'}}>
-      <h2 className="heading">Add New Task</h2>
+      <br /><br />
+      <div className="container" style={{backgroundImage: 'linear-gradient(to bottom, 	#D3D3D3 ,rgb(123, 117, 117))', maxWidth: '600px'}}>
+      <h2 className="heading" style={{color:'gray'}}>Add New Task</h2>
       <div className='row'>
         <div className="col-3"></div>
         <div className="col-6">
           <div className="row">
             
-              <div className="mb-3">
+              <div className="mb-3" style={{textAlign:'left', fontSize:'18px'}}>
                 <label htmlFor="">Title</label>
                 <input 
                 onChange={(e)=>setTitle(e.target.value)}
                 type="text" 
                 className="form-control" />
               </div>
-              <div className="mb-3">
-                <label htmlFor="">Details</label>
+              <div className="mb-3" style={{textAlign:'left'}}>
+                <label htmlFor="" style={{fontSize:'18px'}}>Details</label>
                 <input 
                 onChange={(e)=>setDetails(e.target.value)}
                 type="text" 
