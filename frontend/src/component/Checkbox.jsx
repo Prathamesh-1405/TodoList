@@ -47,19 +47,15 @@ function Checkbox({ id }) {
 
 
   return (
-    <div className="card" style={{ height: '100%' }}>
-      <div
-        className="form-check form-check-inline"
-        style={{ width: '100%', height: '100%', margin: 0 }}
-      >
+    <div className="container" style={{ height: '100%' }}>
+      
         <input
           className="form-check-input"
           type="checkbox"
           id={`inlineCheckbox-${id}`}
           onChange={handleCheckboxChange}
-          style={{ width: '100%', height: '100%', margin: 0 }}
+          style={{ width: '40px', height: '40px', margin: 0 }}
         />
-      </div>
     </div>
   );
 }

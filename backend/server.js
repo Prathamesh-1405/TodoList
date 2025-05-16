@@ -6,7 +6,7 @@ const cors = require('cors')
 app.use(cors())
 
 app.use(express.json());
-app.use(express.urlencoded())
+// app.use(express.urlencoded())
 const userRouter=require('./Routes/user')
 const todoRouter=require('./Routes/todo')
 

@@ -5,7 +5,7 @@ function Navbar() {
 
   const onLogout=()=>{
     
-
+    sessionStorage.removeItem('username')
   }
   return (
     <nav
@@ -15,7 +15,7 @@ function Navbar() {
   }}
 >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Just Do It</Link>
+        <Link className="navbar-brand" to="/">Just Do !t</Link>
 
         <button
           className="navbar-toggler"
@@ -29,10 +29,10 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/todo">Todos</Link>
+              <Link className="nav-link" to="/todo">Tasks</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/addTodo">Add Todo</Link>
+              <Link className="nav-link" to="/addTodo">Add Task</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" onClick={onLogout} to="/login">Log out</Link>

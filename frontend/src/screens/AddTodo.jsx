@@ -1,5 +1,5 @@
 import { toast, ToastContainer } from "react-toastify"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, Navigate } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,7 +13,14 @@ function AddTodo(){
 
 
   const navigate=useNavigate()
-
+  
+  useEffect(() => {
+    if(!sessionStorage.getItem('username')){
+      toast.error('Please login to your account!')
+      navigate('/login')
+    }
+    return;
+  }, [navigate]);
   const onAdd= async()=>{
     if(title.length===0){
       toast.warning('Please Enter Title!')
