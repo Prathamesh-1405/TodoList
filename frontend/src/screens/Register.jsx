@@ -110,7 +110,7 @@ function Register(){
                 <input 
                 value={confirmPassword}
                 onChange={(e)=>setConfirmPassword(e.target.value)}
-                type="text" 
+                type="password" 
                 className="form-control" />
               </div>
               <div className="mb-3" style={{color: 'whitesmoke'}}>

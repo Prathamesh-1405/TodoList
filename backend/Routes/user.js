@@ -1,56 +1,60 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const connectDB=require('../db')
-const User=require('../models/user')
-const { find } = require('../models/todo')
+const connectDB = require("../db");
+const User = require("../models/user");
+const { find } = require("../models/todo");
+const registerSchema = require("../joi/registerSchema");
 
-router.post('/user/register', async (req, res)=>{
+router.post("/user/register", async (req, res) => {
+  try {
+    const { error } = registerSchema.validate(req.body);
 
-  try{
+    if (error) {
+      res.status(400).json({ error: error.details[0].message });
+      return;
+    }
     connectDB();
-    const {name, username, password }=req.body;
-    const user= await User.find({username: username})
-    console.log(user)
-    if(!(user==[])){
-      const newUser=new User({name, username,  password})
+    const { name, username, password } = req.body;
+    const user = await User.find({ username: username });
+    console.log(user);
+    if (!(user == [])) {
+      const newUser = new User({ name, username, password });
       await newUser.save();
-      res.status(201).json({ message: 'User created successfully', user: newUser });
+      res
+        .status(201)
+        .json({ message: "User created successfully", user: newUser });
+    } else {
+      res.status(200).json({ message: "Username used", user });
     }
-    else{
-      res.status(200).json({ message: 'Username used', user});
-    }
-  }
-  catch(err){
+  } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: "Server error" });
   }
+});
 
-})
-
-router.post('/user/login', async (req, res)=>{
-
-  try{
+router.post("/user/login", async (req, res) => {
+  try {
     connectDB();
-    const {username, password }=req.body;
+    const { username, password } = req.body;
 
-    const user= await User.findOne({username: username})
-    
-    if(!user){
-      return res.status(201).json({message: 'User not found!'})
+    const user = await User.findOne({ username: username });
+
+    if (!user) {
+      return res.status(201).json({ message: "User not found!" });
     }
 
-    if(user.password!==password){
-      return res.status(202).json({message: 'Invalid password!'})
+    if (user.password !== password) {
+      return res.status(202).json({ message: "Invalid password!" });
     }
-    
-    return res.status(200).json({message: 'Login Successful', username: user.username})
-  }
-  catch(err){
+
+    return res
+      .status(200)
+      .json({ message: "Login Successful", username: user.username });
+  } catch (err) {
     console.error(err);
-    res.status(500).json({message:'Server Error!', error: 'Server error' });
+    res.status(500).json({ message: "Server Error!", error: "Server error" });
   }
-  
-})
+});
 
-module.exports=router;
+module.exports = router;
