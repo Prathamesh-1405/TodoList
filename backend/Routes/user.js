@@ -16,9 +16,9 @@ router.post("/user/register", async (req, res) => {
     }
     connectDB();
     const { name, username, password } = req.body;
-    const user = await User.find({ username: username });
+    const user = await User.findOne({ username: username });
     console.log(user);
-    if (!(user == [])) {
+    if (!(user)) {
       const newUser = new User({ name, username, password });
       await newUser.save();
       res
