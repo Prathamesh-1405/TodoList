@@ -13,14 +13,13 @@ export async function register(name, username, password) {
   catch(e){
     return {status: 'error', error:e}
   }
-  
 }
 
-export async function login(username, password) {
+export async function login(email, password) {
   try{
     const url=createUrl('user/login')
     const body={
-      username,  password,
+      email,  password,
     }
     const response=await axios.post(url, body)
     return {status: response.status, data: response.data}
@@ -28,7 +27,22 @@ export async function login(username, password) {
   catch(e){
     return {status: 'error', error:e}
   }
-  
 }
+
+export async function googleLogin(token) {
+  try{
+    const url=createUrl('/api/auth/google')
+    const body={
+      token
+    }
+    const response=await axios.post(url, body)
+    return {status: response.status, data: response.data}
+  }
+  catch(e){
+    return {status: 'error', error:e}
+  }
+}
+
+
 
 
